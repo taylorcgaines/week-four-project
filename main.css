@@ -1,0 +1,18 @@
+* {
+box-sizing: border-box;
+margin: 0 auto;
+}
+img {
+	max-width: 100%;
+}
+body{
+  text-align: center;
+}
+.media-player{
+  border-bottom: 1px solid black;
+  padding: 1vw 0vw 1vw 0vw;
+}
+.search-bar{
+  border-bottom: 1px solid grey;
+  padding: 1vw 0vw 1vw 0vw;
+}
