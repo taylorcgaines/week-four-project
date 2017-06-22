@@ -16,3 +16,11 @@ body{
   border-bottom: 1px solid grey;
   padding: 1vw 0vw 1vw 0vw;
 }
+.results {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.track {
+	flex-basis: 25%;
+}
