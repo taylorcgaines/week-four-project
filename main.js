@@ -10,21 +10,36 @@ function fetchPerson(search) {
 
       for (i = 0; i < json.length; i++){
         var track = {}
+        track.id = json[i].id;
         track.user = json[i].user.username;
         track.artwork = json[i].artwork_url;
         track.title = json[i].title;
+        track.play = json[i].stream_url;
         console.log(track)
 
         const html = `
-          <div class="track">
-            <div class="trackArt"><img src="${track.artwork}"></div>
+          <div class="track playMe">
+            <div class="trackArt"><img src="${track.artwork}"  id="${track.id}"></div>
             <div class="trackName">${track.title}</div>
             <div class="trackUser">${track.user}</div>
           </div>
           `
+        var result = document.querySelector(".results").insertAdjacentHTML('afterbegin', html)
 
-        document.querySelector(".results").insertAdjacentHTML('afterbegin', html)
       }
+    }).then(function(){
+      var tracklink = document.querySelectorAll('.playMe img')
+
+      for (i=0;i<tracklink.length;i++){
+        tracklink[i].addEventListener('click', function(event) {
+          const trackId = event.target.id;
+          const player = `
+            <audio class="music-player" autoplay controls="controls" src="https://api.soundcloud.com/tracks/${trackId}/stream?client_id=${apinum}"></audio>
+            `
+          document.querySelector(".player").insertAdjacentHTML('afterbegin', player)
+        })
+      }
+
     })
 }
 
